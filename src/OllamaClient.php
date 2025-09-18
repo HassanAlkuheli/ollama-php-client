@@ -160,13 +160,25 @@ class OllamaClient
      * @return void
      * @throws Exception If the image file is not found
      */
-    public function addImage(string $filePath): void
+    public function addImage(string $pathOrUrl): void
     {
-        if (file_exists($filePath)) {
-            $this->images[] = base64_encode(file_get_contents($filePath));
-        } else {
-            throw new Exception("Image not found: " . $filePath);
+        // If it's a URL (starts with http or https), download it
+        if (preg_match('/^https?:\/\//i', $pathOrUrl)) {
+            $imageData = @file_get_contents($pathOrUrl);
+            if ($imageData === false) {
+                throw new Exception("Unable to download image from URL: " . $pathOrUrl);
+            }
         }
+        // Otherwise treat it as a local file path
+        else {
+            if (!file_exists($pathOrUrl)) {
+                throw new Exception("Image not found: " . $pathOrUrl);
+            }
+            $imageData = file_get_contents($pathOrUrl);
+        }
+
+        // Always store as base64
+        $this->images[] = base64_encode($imageData);
     }
 
     /**
