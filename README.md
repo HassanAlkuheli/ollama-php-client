@@ -1,2 +1,11 @@
-# ollama-php-client
-Ollama php client that you can use ollama generate and chat properties. 
+# Ollama PHP Client
+
+A simple PHP client library for [Ollama](https://ollama.ai) API.  
+Supports `generate`, `chat`, history, context, and images.
+
+## Installation
+
+```bash
+composer require sfyigit/ollama-php-client
+
+

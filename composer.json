@@ -1,0 +1,21 @@
+{
+    "name": "sfyigit/ollama-php-client",
+    "description": "A simple PHP client library for Ollama API (generate, chat, images, context, history).",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sfyigit\\Ollama\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    },
+    "authors": [
+        {
+            "name": "Sezer Fatih",
+            "email": "sezerfatih07@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
